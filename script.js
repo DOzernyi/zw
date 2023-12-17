@@ -29,10 +29,10 @@ let isShowingFront = true;
 function updateFlashcard() {
     const currentCard = currentFlashcards[currentCardIndex];
     flashcardFront.innerText = isShowingFront ? currentCard.front : '';
-    
+
     // Display both in the custom font and Times New Roman on the back
     const backText = isShowingFront ? '' : currentCard.back.join(' / ');
-    flashcardBack.innerHTML = `<div class="custom-font">${currentCard.back[0]}</div><div class="times-new-roman">${currentCard.back[1]}</div>`;
+    flashcardBack.innerHTML = `<div class="custom-font">${backText}</div><div class="times-new-roman">${backText}</div>`;
 }
 
 function showNextCard() {
