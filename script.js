@@ -35,6 +35,7 @@ function updateFlashcard() {
     flashcardBack.innerHTML = `<div class="custom-font">${backText}</div>`;
 }
 
+
 function showNextCard() {
     // Toggle back to front when moving to the next card
     isShowingFront = true;
