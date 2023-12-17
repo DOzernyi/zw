@@ -18,15 +18,24 @@ const flashcardsSet2 = [
 
 let currentCardIndex = 0;
 let currentFlashcards = flashcardsSet1; // Default set
+let isShowingFront = true;
 
 function updateFlashcard() {
     const currentCard = currentFlashcards[currentCardIndex];
-    flashcardFront.innerText = currentCard.front;
-    flashcardBack.innerText = ''; // Clear the back side
+    flashcardFront.innerText = isShowingFront ? currentCard.front : '';
+    flashcardBack.innerText = !isShowingFront ? currentCard.back : '';
 }
 
 function showNextCard() {
+    // Toggle back to front when moving to the next card
+    isShowingFront = true;
     currentCardIndex = (currentCardIndex + 1) % currentFlashcards.length;
+    updateFlashcard();
+}
+
+function toggleCardSide() {
+    // Toggle between front and back when clicking on the card
+    isShowingFront = !isShowingFront;
     updateFlashcard();
 }
 
@@ -39,6 +48,7 @@ function changeFlashcardSet() {
 
     // Reset card index and update the displayed card
     currentCardIndex = 0;
+    isShowingFront = true;
     updateFlashcard();
 }
 
@@ -47,4 +57,5 @@ updateFlashcard();
 
 // Event listeners
 nextButton.addEventListener('click', showNextCard);
+flashcard.addEventListener('click', toggleCardSide);
 flashcardSetSelector.addEventListener('change', changeFlashcardSet);
