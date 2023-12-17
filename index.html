@@ -3,22 +3,31 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
-    <title>Flashcard Website</title>
+    <title>Flashcard App</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap">
 </head>
 <body>
-    <div class="flashcard-container">
-        <div class="flashcard" onclick="flipCard()">
-            <div class="flashcard-front">
-                <p>Flashcard 1 - Front Content</p>
-            </div>
-            <div class="flashcard-back">
-                <p>Flashcard 1 - Back Content</p>
-            </div>
-        </div>
-        <button onclick="nextCard()">Next</button>
+    <div id="welcome-message">
+        <h1>Welcome to the Flashcard App!</h1>
+        <p>Select a set and start learning.</p>
     </div>
-
+    <div id="flashcard-container">
+        <div id="set-selection-container">
+            <label for="flashcard-set-selector">Select Set:</label>
+            <select id="flashcard-set-selector">
+                <option value="set1">Set 1</option>
+                <option value="set2">Set 2</option>
+                <option value="geography">Geography</option>
+            </select>
+        </div>
+        <div id="flashcard">
+            <div id="flashcard-front">Front</div>
+            <div id="flashcard-back">Back</div>
+        </div>
+        <button id="next-button">Next</button>
+        <button id="flip-button">Flip</button>
+    </div>
     <script src="script.js"></script>
 </body>
 </html>
