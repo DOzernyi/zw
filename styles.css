@@ -30,8 +30,8 @@ body {
 }
 
 #flashcard {
-    width: 300px;
-    height: 200px;
+    width: 400px; /* Change the width for larger flashcards */
+    height: 300px; /* Change the height for larger flashcards */
     border: 1px solid #ccc;
     margin-bottom: 20px;
     perspective: 1000px;
@@ -45,6 +45,7 @@ body {
     justify-content: center;
     align-items: center;
     backface-visibility: hidden;
+    font-size: 20px; /* Increase the font size */
 }
 
 #flashcard-front {
@@ -64,6 +65,7 @@ body {
     border: none;
     cursor: pointer;
     margin-right: 10px;
+    font-size: 16px; /* Increase the font size */
 }
 
 .custom-font {
@@ -75,5 +77,15 @@ body {
     #flashcard {
         width: 80vw;
         height: 50vh;
+    }
+
+    #flashcard-front,
+    #flashcard-back {
+        font-size: 16px; /* Adjust font size for smaller screens */
+    }
+
+    #next-button,
+    #flip-button {
+        font-size: 14px; /* Adjust font size for smaller screens */
     }
 }
