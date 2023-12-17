@@ -25,6 +25,7 @@ const flashcards = {
 
 let currentSet = 'set1';
 let currentCardIndex = 0;
+let isShowingFront = true;
 
 function updateFlashcard() {
   const currentCard = flashcards[currentSet][currentCardIndex];
@@ -38,26 +39,4 @@ function showFront() {
   updateFlashcard();
 }
 
-function showBack() {
-  isShowingFront = false;
-  updateFlashcard();
-}
-
-function showNextCard() {
-  currentCardIndex = (currentCardIndex + 1) % flashcards[currentSet].length;
-  showFront();
-}
-
-function changeFlashcardSet() {
-  currentSet = flashcardSetSelector.value || 'set1';
-  currentCardIndex = 0;
-  showFront();
-}
-
-// Initial setup
-showFront();
-
-// Event listeners
-nextButton.addEventListener('click', showNextCard);
-flipButton.addEventListener('click', showBack);
-flashcardSetSelector.addEventListener('change', changeFlashcardSet);
+function showBack
