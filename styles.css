@@ -1,39 +1,9 @@
-@font-face {
-    font-family: 'CustomFont';
-    src: url('fonts/abcd.ttf') format('truetype');
-    font-weight: normal;
-    font-style: normal;
-}
-
-body {
-    font-family: 'CustomFont', 'Open Sans', Arial, sans-serif;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 100vh;
-    margin: 0;
-}
-
-#welcome-message {
-    text-align: center;
-    margin-bottom: 20px;
-}
-
-#flashcard-container {
-    text-align: center;
-    margin-top: 20px;
-}
-
-#set-selection-container {
-    margin-bottom: 20px;
-}
+/* ... (existing styles) ... */
 
 #flashcard {
-    width: 300px;
-    height: 200px;
-    border: 1px solid #ccc;
-    margin-bottom: 20px;
+    width: 600px; /* Increased the width */
+    height: 400px; /* Increased the height */
+    position: relative; /* Added position relative for button positioning */
     perspective: 1000px;
 }
 
@@ -45,6 +15,7 @@ body {
     justify-content: center;
     align-items: center;
     backface-visibility: hidden;
+    position: absolute; /* Added position absolute for button positioning */
 }
 
 #flashcard-front {
@@ -63,17 +34,17 @@ body {
     padding: 10px;
     border: none;
     cursor: pointer;
-    margin-right: 10px;
+    position: absolute; /* Added position absolute for button positioning */
+    bottom: 10px; /* Adjusted the position from margin-right to bottom */
+    width: 80px; /* Adjusted the width of the buttons */
 }
 
-.custom-font {
-    font-family: 'CustomFont', Arial, sans-serif;
+#next-button {
+    right: 10px; /* Positioned the Next button to the right */
 }
 
-/* Media queries for mobile responsiveness */
-@media (max-width: 600px) {
-    #flashcard {
-        width: 80vw;
-        height: 50vh;
-    }
+#flip-button {
+    right: 100px; /* Positioned the Flip button to the left of the Next button */
 }
+
+/* ... (existing styles) ... */
