@@ -56,20 +56,18 @@ body {
     transform: rotateY(180deg);
 }
 
-#next-button {
+#next-button,
+#flip-button {
     background-color: #4caf50;
     color: #fff;
     padding: 10px;
     border: none;
     cursor: pointer;
+    margin-right: 10px;
 }
 
 .custom-font {
     font-family: 'CustomFont', Arial, sans-serif;
-}
-
-.times-new-roman {
-    font-family: 'Times New Roman', Times, serif;
 }
 
 /* Media queries for mobile responsiveness */
