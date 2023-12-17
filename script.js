@@ -1,42 +1,48 @@
-const flashcard = document.getElementById('flashcard');
-const flashcardFront = document.getElementById('flashcard-front');
-const flashcardBack = document.getElementById('flashcard-back');
-const nextButton = document.getElementById('next-button');
-const flipButton = document.getElementById('flip-button');
-const flashcardSetSelector = document.getElementById('flashcard-set-selector');
+let isFlipped = false;
+let currentCard = 1;
+const totalCards = 3; // Change this to the total number of flashcards
 
-const flashcards = {
-  set1: [
-    { front: 'Capital of France', back: ['Paris'] },
-    { front: 'Largest desert in the world', back: ['Antarctica'] },
-    { front: 'Longest river in the world', back: ['Nile'] },
-  ],
-  set2: [
-    { front: 'Question 1 Set 2', back: ['Answer 1 Set 2'] },
-    { front: 'Question 2 Set 2', back: ['Answer 2 Set 2'] },
-    // Add more flashcards for Set 2 as needed
-  ],
-  geography: [
-    { front: 'Capital of Japan', back: ['Tokyo'] },
-    { front: 'Highest mountain in the world', back: ['Mount Everest'] },
-    { front: 'Country with the most pyramids', back: ['Sudan'] },
-  ],
-};
+function flipCard() {
+    const flashcard = document.querySelector('.flashcard');
+    isFlipped = !isFlipped;
 
-let currentSet = 'set1';
-let currentCardIndex = 0;
-let isShowingFront = true;
-
-function updateFlashcard() {
-  const currentCard = flashcards[currentSet][currentCardIndex];
-  flashcardFront.innerText = isShowingFront ? currentCard.front : '';
-  flashcardBack.innerText = isShowingFront ? '' : currentCard.back.join(' / ');
-  flashcardBack.style.display = isShowingFront ? 'none' : 'flex';
+    const rotation = isFlipped ? 'rotateY(180deg)' : 'rotateY(0deg)';
+    flashcard.style.transform = rotation;
 }
 
-function showFront() {
-  isShowingFront = true;
-  updateFlashcard();
+function nextCard() {
+    const flashcard = document.querySelector('.flashcard');
+    flashcard.style.transform = 'rotateY(0deg)';
+    isFlipped = false;
+
+    currentCard = (currentCard % totalCards) + 1;
+    updateCardContent(currentCard);
 }
 
-function showBack
+function updateCardContent(cardNumber) {
+    const frontContent = document.querySelector('.flashcard-front p');
+    const backContent = document.querySelector('.flashcard-back p');
+
+    // Customize the content based on the card number
+    switch (cardNumber) {
+        case 1:
+            frontContent.textContent = "Flashcard 1 - Front Content";
+            backContent.textContent = "Flashcard 1 - Back Content";
+            break;
+        case 2:
+            frontContent.textContent = "Flashcard 2 - Front Content";
+            backContent.textContent = "Flashcard 2 - Back Content";
+            break;
+        case 3:
+            frontContent.textContent = "Flashcard 3 - Front Content";
+            backContent.textContent = "Flashcard 3 - Back Content";
+            break;
+        // Add more cases as needed
+
+        default:
+            break;
+    }
+}
+
+// Initialize with the first card
+updateCardContent(currentCard);
