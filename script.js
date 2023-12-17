@@ -27,16 +27,9 @@ let currentCardIndex = 0;
 let currentFlashcards = flashcardsSet1; // Default set
 let isShowingFront = true;
 
-function updateFlashcard() {
-    const currentCard = currentFlashcards[currentCardIndex];
-    flashcardFront.innerText = isShowingFront ? currentCard.front : '';
-
-    // Display the back of the card without custom font
-    const backText = isShowingFront ? '' : currentCard.back.join(' / ');
-    flashcardBack.innerText = backText;
-
-    // Hide or show the back of the card
-    flashcardBack.style.display = isShowingFront ? 'none' : 'flex';
+function showFront() {
+    isShowingFront = true;
+    updateFlashcard();
 }
 
 function showBack() {
@@ -44,10 +37,15 @@ function showBack() {
     updateFlashcard();
 }
 
+function updateFlashcard() {
+    const currentCard = currentFlashcards[currentCardIndex];
+    flashcardFront.innerText = isShowingFront ? currentCard.front : '';
+    flashcardBack.innerText = isShowingFront ? '' : currentCard.back.join(' / ');
+}
+
 function showNextCard() {
-    isShowingFront = true;
     currentCardIndex = (currentCardIndex + 1) % currentFlashcards.length;
-    updateFlashcard();
+    showFront();
 }
 
 function changeFlashcardSet() {
@@ -59,14 +57,13 @@ function changeFlashcardSet() {
         currentFlashcards = flashcardsGeography;
     }
 
-    // Reset card index and update the displayed card
+    // Reset card index and show the front of the card
     currentCardIndex = 0;
-    isShowingFront = true;
-    updateFlashcard();
+    showFront();
 }
 
 // Initial setup
-updateFlashcard();
+showFront();
 
 // Event listeners
 nextButton.addEventListener('click', showNextCard);
