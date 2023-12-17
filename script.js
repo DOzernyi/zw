@@ -2,6 +2,7 @@ const flashcard = document.getElementById('flashcard');
 const flashcardFront = document.getElementById('flashcard-front');
 const flashcardBack = document.getElementById('flashcard-back');
 const nextButton = document.getElementById('next-button');
+const flipButton = document.getElementById('flip-button');
 const flashcardSetSelector = document.getElementById('flashcard-set-selector');
 
 const flashcardsSet1 = [
@@ -35,17 +36,14 @@ function updateFlashcard() {
     flashcardBack.innerHTML = `<div class="custom-font">${backText}</div>`;
 }
 
-
-function showNextCard() {
-    // Toggle back to front when moving to the next card
-    isShowingFront = true;
-    currentCardIndex = (currentCardIndex + 1) % currentFlashcards.length;
+function showBack() {
+    isShowingFront = false;
     updateFlashcard();
 }
 
-function toggleCardSide() {
-    // Toggle between front and back when clicking on the card
-    isShowingFront = !isShowingFront;
+function showNextCard() {
+    isShowingFront = true;
+    currentCardIndex = (currentCardIndex + 1) % currentFlashcards.length;
     updateFlashcard();
 }
 
@@ -69,5 +67,5 @@ updateFlashcard();
 
 // Event listeners
 nextButton.addEventListener('click', showNextCard);
-flashcard.addEventListener('click', toggleCardSide);
+flipButton.addEventListener('click', showBack);
 flashcardSetSelector.addEventListener('change', changeFlashcardSet);
