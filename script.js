@@ -23,11 +23,11 @@ const flashcards = {
   ],
 };
 
+let currentSet = 'set1';
 let currentCardIndex = 0;
-let currentFlashcards = flashcards.set1; // Default set
 
 function updateFlashcard() {
-  const currentCard = currentFlashcards[currentCardIndex];
+  const currentCard = flashcards[currentSet][currentCardIndex];
   flashcardFront.innerText = isShowingFront ? currentCard.front : '';
   flashcardBack.innerText = isShowingFront ? '' : currentCard.back.join(' / ');
   flashcardBack.style.display = isShowingFront ? 'none' : 'flex';
@@ -44,13 +44,12 @@ function showBack() {
 }
 
 function showNextCard() {
-  currentCardIndex = (currentCardIndex + 1) % currentFlashcards.length;
+  currentCardIndex = (currentCardIndex + 1) % flashcards[currentSet].length;
   showFront();
 }
 
 function changeFlashcardSet() {
-  const selectedSet = flashcardSetSelector.value;
-  currentFlashcards = flashcards[selectedSet] || [];
+  currentSet = flashcardSetSelector.value || 'set1';
   currentCardIndex = 0;
   showFront();
 }
