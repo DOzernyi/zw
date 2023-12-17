@@ -1,48 +1,49 @@
-let isFlipped = false;
-let currentCard = 1;
-const totalCards = 3; // Change this to the total number of flashcards
+document.addEventListener('DOMContentLoaded', function () {
+    // Get elements
+    const flashcardSetSelector = document.getElementById('flashcard-set-selector');
+    const flashcardFront = document.getElementById('flashcard-front');
+    const flashcardBack = document.getElementById('flashcard-back');
+    const nextButton = document.getElementById('next-button');
+    const flipButton = document.getElementById('flip-button');
 
-function flipCard() {
-    const flashcard = document.querySelector('.flashcard');
-    isFlipped = !isFlipped;
+    // Flashcard sets
+    const flashcardSets = {
+        set1: { front: 'Front 1', back: 'Back 1' },
+        set2: { front: 'Front 2', back: 'Back 2' },
+        geography: { front: 'Geography Front', back: 'Geography Back' }
+    };
 
-    const rotation = isFlipped ? 'rotateY(180deg)' : 'rotateY(0deg)';
-    flashcard.style.transform = rotation;
-}
+    // Initialize flashcard
+    let currentSet = flashcardSets[flashcardSetSelector.value];
+    updateFlashcard(currentSet);
 
-function nextCard() {
-    const flashcard = document.querySelector('.flashcard');
-    flashcard.style.transform = 'rotateY(0deg)';
-    isFlipped = false;
+    // Event listeners
+    flashcardSetSelector.addEventListener('change', function () {
+        currentSet = flashcardSets[this.value];
+        updateFlashcard(currentSet);
+    });
 
-    currentCard = (currentCard % totalCards) + 1;
-    updateCardContent(currentCard);
-}
+    flipButton.addEventListener('click', function () {
+        flipFlashcard();
+    });
 
-function updateCardContent(cardNumber) {
-    const frontContent = document.querySelector('.flashcard-front p');
-    const backContent = document.querySelector('.flashcard-back p');
+    nextButton.addEventListener('click', function () {
+        // Implement logic to move to the next flashcard if needed
+        // For simplicity, it will just flip the current flashcard
+        flipFlashcard();
+    });
 
-    // Customize the content based on the card number
-    switch (cardNumber) {
-        case 1:
-            frontContent.textContent = "Flashcard 1 - Front Content";
-            backContent.textContent = "Flashcard 1 - Back Content";
-            break;
-        case 2:
-            frontContent.textContent = "Flashcard 2 - Front Content";
-            backContent.textContent = "Flashcard 2 - Back Content";
-            break;
-        case 3:
-            frontContent.textContent = "Flashcard 3 - Front Content";
-            backContent.textContent = "Flashcard 3 - Back Content";
-            break;
-        // Add more cases as needed
-
-        default:
-            break;
+    // Function to update flashcard content
+    function updateFlashcard(set) {
+        flashcardFront.textContent = set.front;
+        flashcardBack.textContent = set.back;
+        // Ensure the front is visible when updating the flashcard content
+        flashcardFront.style.transform = 'rotateY(0deg)';
     }
-}
 
-// Initialize with the first card
-updateCardContent(currentCard);
+    // Function to flip the flashcard
+    function flipFlashcard() {
+        flashcardFront.style.transform = 'rotateY(180deg)';
+        flashcardBack.style.transform = 'rotateY(0deg)';
+    }
+});
