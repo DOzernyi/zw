@@ -2,7 +2,7 @@ const flashcard = document.getElementById('flashcard');
 const flashcardFront = document.getElementById('flashcard-front');
 const flashcardBack = document.getElementById('flashcard-back');
 const nextButton = document.getElementById('next-button');
-const flipButton = document.getElementById('flip-button'); // Updated
+const flipButton = document.getElementById('flip-button');
 const flashcardSetSelector = document.getElementById('flashcard-set-selector');
 
 const flashcardsSet1 = [
@@ -31,9 +31,12 @@ function updateFlashcard() {
     const currentCard = currentFlashcards[currentCardIndex];
     flashcardFront.innerText = isShowingFront ? currentCard.front : '';
 
-    // Display the back of the card with the custom font
+    // Display the back of the card without custom font
     const backText = isShowingFront ? '' : currentCard.back.join(' / ');
-    flashcardBack.innerHTML = `<div class="custom-font">${backText}</div>`;
+    flashcardBack.innerText = backText;
+
+    // Hide or show the back of the card
+    flashcardBack.style.display = isShowingFront ? 'none' : 'flex';
 }
 
 function showBack() {
@@ -67,5 +70,5 @@ updateFlashcard();
 
 // Event listeners
 nextButton.addEventListener('click', showNextCard);
-flipButton.addEventListener('click', showBack); // Updated
+flipButton.addEventListener('click', showBack);
 flashcardSetSelector.addEventListener('change', changeFlashcardSet);
