@@ -63,6 +63,14 @@ body {
     cursor: pointer;
 }
 
+.custom-font {
+    font-family: 'CustomFont', Arial, sans-serif;
+}
+
+.times-new-roman {
+    font-family: 'Times New Roman', Times, serif;
+}
+
 /* Media queries for mobile responsiveness */
 @media (max-width: 600px) {
     #flashcard {
