@@ -2,7 +2,7 @@ const flashcard = document.getElementById('flashcard');
 const flashcardFront = document.getElementById('flashcard-front');
 const flashcardBack = document.getElementById('flashcard-back');
 const nextButton = document.getElementById('next-button');
-const flipButton = document.getElementById('flip-button');
+const flipButton = document.getElementById('flip-button');  // Updated
 const flashcardSetSelector = document.getElementById('flashcard-set-selector');
 
 const flashcardsSet1 = [
@@ -67,5 +67,5 @@ updateFlashcard();
 
 // Event listeners
 nextButton.addEventListener('click', showNextCard);
-flipButton.addEventListener('click', showBack);
+flipButton.addEventListener('click', showBack);  // Updated
 flashcardSetSelector.addEventListener('change', changeFlashcardSet);
