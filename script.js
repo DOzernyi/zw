@@ -5,21 +5,21 @@ const nextButton = document.getElementById('next-button');
 const flashcardSetSelector = document.getElementById('flashcard-set-selector');
 
 const flashcardsSet1 = [
-    { front: 'Capital of France', back: ['Paris', 'Paris'] },
-    { front: 'Largest desert in the world', back: ['Antarctica', 'Antarctica'] },
-    { front: 'Longest river in the world', back: ['Nile', 'Nile'] },
+    { front: 'Capital of France', back: ['Paris'] },
+    { front: 'Largest desert in the world', back: ['Antarctica'] },
+    { front: 'Longest river in the world', back: ['Nile'] },
 ];
 
 const flashcardsSet2 = [
-    { front: 'Question 1 Set 2', back: ['Answer 1 Set 2', 'Answer 1 Set 2'] },
-    { front: 'Question 2 Set 2', back: ['Answer 2 Set 2', 'Answer 2 Set 2'] },
+    { front: 'Question 1 Set 2', back: ['Answer 1 Set 2'] },
+    { front: 'Question 2 Set 2', back: ['Answer 2 Set 2'] },
     // Add more flashcards for Set 2 as needed
 ];
 
 const flashcardsGeography = [
-    { front: 'Capital of Japan', back: ['Tokyo', 'Tokyo'] },
-    { front: 'Highest mountain in the world', back: ['Mount Everest', 'Mount Everest'] },
-    { front: 'Country with the most pyramids', back: ['Sudan', 'Sudan'] },
+    { front: 'Capital of Japan', back: ['Tokyo'] },
+    { front: 'Highest mountain in the world', back: ['Mount Everest'] },
+    { front: 'Country with the most pyramids', back: ['Sudan'] },
 ];
 
 let currentCardIndex = 0;
@@ -30,9 +30,9 @@ function updateFlashcard() {
     const currentCard = currentFlashcards[currentCardIndex];
     flashcardFront.innerText = isShowingFront ? currentCard.front : '';
 
-    // Display both in the custom font and Times New Roman on the back
+    // Display the back of the card with the custom font
     const backText = isShowingFront ? '' : currentCard.back.join(' / ');
-    flashcardBack.innerHTML = `<div class="custom-font">${backText}</div><div class="times-new-roman">${backText}</div>`;
+    flashcardBack.innerHTML = `<div class="custom-font">${backText}</div>`;
 }
 
 function showNextCard() {
