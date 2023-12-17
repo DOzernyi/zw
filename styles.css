@@ -29,16 +29,6 @@ body {
     margin-bottom: 20px;
 }
 
-#next-button,
-#flip-button {
-    background-color: #4caf50;
-    color: #fff;
-    padding: 10px;
-    border: none;
-    cursor: pointer;
-    margin-right: 10px;
-}
-
 #flashcard {
     width: 300px;
     height: 200px;
@@ -64,6 +54,16 @@ body {
 #flashcard-back {
     background-color: #f0f0f0;
     transform: rotateY(180deg);
+}
+
+#next-button,
+#flip-button {
+    background-color: #4caf50;
+    color: #fff;
+    padding: 10px;
+    border: none;
+    cursor: pointer;
+    margin-right: 10px;
 }
 
 .custom-font {
