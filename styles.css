@@ -10,6 +10,7 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
     height: 100vh;
     margin: 0;
 }
@@ -63,4 +64,9 @@ body {
 }
 
 /* Media queries for mobile responsiveness */
-@media (max-width: 600px
+@media (max-width: 600px) {
+    #flashcard {
+        width: 80vw;
+        height: 50vh;
+    }
+}
